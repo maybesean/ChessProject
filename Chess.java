@@ -62,8 +62,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(white);
 		
-		g.setColor(Color.white);
-        g.fillRect(0, 0, width, height);
+	
         drawGrid(g2d);
 		
 	}
@@ -81,14 +80,21 @@ class ChessWidget extends JComponent implements  MouseListener{
 			g2d.drawLine(0, i*80, 640, i*80);
 			g2d.drawLine(i*80, 0, i*80, 640);
 		}
-		for(int i =0; i<8; i++){
-			for(int x=0; x<8; x++){
-				if(x%2==1){
-					g2d.setColor(black);
-					g2d.fillRect(x*80,i*80,80,80);
-				}
-			}
-		}
+		for (int row = 0; row < 8; row++)
+	        for (int col = 0; col < 8; col++) {
+	           if(col%2==1){
+	        	   g2d.setColor(black);
+					g2d.fillRect(row*80,col*80,80,80);
+	           }
+	           if(row%2==1){
+	        	   g2d.setColor(white);
+					g2d.fillRect(row*80,col*80,80,80);
+	           }
+	           
+	          
+	           
+	           
+	        }
 	}
 	
 	
@@ -97,8 +103,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 		
 	
-final 	int width = getWidth();
-final	int height = getHeight();
+    final int width = getWidth();
+    final int height = getHeight();
 	Color black,white;
 	int board[][];
 	int currentPlayer;
