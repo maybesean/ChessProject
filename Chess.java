@@ -13,6 +13,8 @@ public class Chess extends JFrame{
 		
 		public Chess(){
 			setSize(655,675);
+			setTitle("Chess");
+			setResizable(false);
 			ChessWidget widget = new ChessWidget();
 			getContentPane().add(widget);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -82,18 +84,15 @@ class ChessWidget extends JComponent implements  MouseListener{
 		}
 		for (int row = 0; row < 8; row++)
 	        for (int col = 0; col < 8; col++) {
-	           if(col%2==1){
-	        	   g2d.setColor(black);
+	        	if ( (row % 2 == 0 && col % 2 == 0) ||  ( row % 2 == 1 &&  col % 2 == 1)  ){
+	        		g2d.setColor(black);
 					g2d.fillRect(row*80,col*80,80,80);
-	           }
-	           if(row%2==1){
-	        	   g2d.setColor(white);
-					g2d.fillRect(row*80,col*80,80,80);
-	           }
+	        	}
 	           
-	          
+	       
 	           
 	           
+	            
 	        }
 	}
 	
