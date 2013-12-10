@@ -61,17 +61,15 @@ class ChessWidget extends JComponent implements  MouseListener{
 			
 	}
 	public void paintComponent(Graphics g){
+		
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(white);
-		
-		
         drawGrid(g2d);
         initialState();
         drawPieces(g2d); 
 		
 	}
 	public void drawGrid(Graphics2D g2d){
-		g2d.setColor(black);
+	
 		
 		g2d.drawLine(0, 0, 0, 639);
 		g2d.drawLine(0, 0, 639, 0);
@@ -90,6 +88,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	        	if ( (row % 2 == 0 && col % 2 == 0) ||  ( row % 2 == 1 &&  col % 2 == 1)  ){
 	        		g2d.setColor(black);
 					g2d.fillRect(row*80,col*80,80,80);
+
 	        	}
 	        }
 	}
@@ -141,14 +140,176 @@ class ChessWidget extends JComponent implements  MouseListener{
 	public void drawPieces(Graphics2D g2d){
 		for(int x = 0; x < 8; x++) {
 			for(int y = 0; y < 8; y++) {
-			//if it is a white rook
+			//reds
 			if(board[x][y]==24){
-				g2d.setColor(white);
-				//best way to represent a chess piece? 
-				//draw sting doesn't work properly
-				//maybe chars
+				g2d.setColor(Color.red);
 				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.drawString("Rook", x*80, y*80);
+
 			}
+			if(board[x][y]==24){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==22){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==19){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==18){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==17){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==20){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==21){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==23){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==25){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==26){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==27){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==28){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==29){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==30){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==31){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==32){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			
+			//blues
+			if(board[x][y]==7){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==5){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==4){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==2){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==1){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==3){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==6){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==8){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==9){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==10){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==11){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==12){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==13){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==14){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==15){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			if(board[x][y]==16){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+
+			}
+			
 			
 		}
 		}
@@ -198,7 +359,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			
 			int current_player;					// denotes who the current player is
 			boolean inPlay;						// indicates if the game is being played at the moment
-			Color black,white;
+			Color black,white,brown,red;
 			int board[][];
 			int currentPlayer;
 }
