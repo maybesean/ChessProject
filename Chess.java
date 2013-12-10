@@ -300,7 +300,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			if(board[x][y]==11){
 				g2d.setColor(Color.blue);
 				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
+				g2d.drawString(pawn,x*88,y*92);
 
 			}
 			if(board[x][y]==12){
