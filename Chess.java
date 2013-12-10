@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import java.awt.Font;
 
 
 public class Chess extends JFrame{
@@ -63,7 +62,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 	public void paintComponent(Graphics g){
 		
-		
 		Graphics2D g2d = (Graphics2D) g;
         drawGrid(g2d);
         initialState();
@@ -73,10 +71,10 @@ class ChessWidget extends JComponent implements  MouseListener{
 	public void drawGrid(Graphics2D g2d){
 	
 		
-		g2d.drawLine(0, 0, 0, 640);
-		g2d.drawLine(0, 0, 640, 0);
-		g2d.drawLine(0, 640, 640, 640);
-		g2d.drawLine(640, 0, 640, 640);
+		g2d.drawLine(0, 0, 0, 639);
+		g2d.drawLine(0, 0, 639, 0);
+		g2d.drawLine(0, 639, 639, 639);
+		g2d.drawLine(639, 0, 639, 639);
 		
 		// draw the horizontal lines using a loop from one to 7, coordiates of each line is (0, x*80, 640, x*80) also
 		// draw vertical lines with coordinates of (x*80, 0, x*80, 640)
@@ -140,7 +138,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 	
 	public void drawPieces(Graphics2D g2d){
-		
 		for(int x = 0; x < 8; x++) {
 			for(int y = 0; y < 8; y++) {
 			//reds
@@ -188,57 +185,42 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 			if(board[x][y]==25){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==26){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==27){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==28){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==29){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==30){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==31){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==32){
 				g2d.setColor(Color.red);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			
@@ -285,57 +267,42 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 			if(board[x][y]==9){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==10){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==11){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==12){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==13){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==14){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==15){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			if(board[x][y]==16){
 				g2d.setColor(Color.blue);
-				g2d.setFont(new Font("Serif",Font.BOLD,80));
-				g2d.drawString(pawn,x*80,y*80);
-
+				g2d.fillOval(x*80, y*80, 80, 80);
 
 			}
 			
@@ -383,23 +350,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 			int blackpawn6 = 30;
 			int blackpawn7 = 31;
 			int blackpawn8 = 32;
-		
-			//Pieces
-			String pawn ="P";
-			String king ="K";
-			String queen = "Q";
-			String bishop ="B";
-			String knight ="Kn";
-			String rook ="R";
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 			
 			
