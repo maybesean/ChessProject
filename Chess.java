@@ -147,11 +147,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.drawString("Rook", x*80, y*80);
 
 			}
-			if(board[x][y]==24){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-
-			}
+			
 			if(board[x][y]==22){
 				g2d.setColor(Color.red);
 				g2d.fillOval(x*80, y*80, 80, 80);
