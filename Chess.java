@@ -148,7 +148,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-			    g2d.drawString(" Rook"  , x*80,y*80+40);
+			    g2d.drawString("   Rook"  , x*80,y*80+40);
 
 			}
 			
@@ -157,7 +157,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("Knight", x*80, y*80+40);
+				g2d.drawString("   Knight", x*80, y*80+40);
 				
 			}
 			if(board[x][y]==19){
@@ -165,7 +165,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("Bishop", x*80, y*80+40);
+				g2d.drawString("  Bishop", x*80, y*80+40);
 
 			}
 			if(board[x][y]==18){
@@ -173,7 +173,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("Queen", x*80, y*80+40);
+				g2d.drawString("  Queen", x*80, y*80+40);
 
 			}
 			if(board[x][y]==17){
@@ -181,7 +181,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" King", x*80, y*80+40);
+				g2d.drawString("   King", x*80, y*80+40);
 
 			}
 			if(board[x][y]==20){
@@ -189,7 +189,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("Bishop", x*80, y*80+40);
+				g2d.drawString("  Bishop", x*80, y*80+40);
 
 			}
 			if(board[x][y]==21){
@@ -197,7 +197,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("Knight", x*80, y*80+40);
+				g2d.drawString("  Knight", x*80, y*80+40);
 
 			}
 			if(board[x][y]==23){
@@ -205,7 +205,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("Rook", x*80, y*80+40);
+				g2d.drawString("   Rook", x*80, y*80+40);
 
 			}
 			if(board[x][y]==25){
@@ -213,7 +213,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==26){
@@ -221,7 +221,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("  Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==27){
@@ -229,7 +229,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==28){
@@ -237,7 +237,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==29){
@@ -245,7 +245,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==30){
@@ -253,7 +253,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==31){
@@ -261,7 +261,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==32){
@@ -269,7 +269,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("   Pawn", x*80, y*80+40);
 
 			}
 			
@@ -279,7 +279,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Rook", x*80, y*80+40);
+				g2d.drawString("    Rook", x*80, y*80+40);
 
 			}
 			if(board[x][y]==5){
@@ -287,7 +287,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Knight", x*80, y*80+40);
+				g2d.drawString("   Knight", x*80, y*80+40);
 
 			}
 			if(board[x][y]==4){
@@ -295,7 +295,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Bishop", x*80, y*80+40);
+				g2d.drawString("   Bishop", x*80, y*80+40);
 
 			}
 			if(board[x][y]==2){
@@ -303,7 +303,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Queen", x*80, y*80+40);
+				g2d.drawString("   Queen", x*80, y*80+40);
 
 			}
 			if(board[x][y]==1){
@@ -311,7 +311,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" King", x*80, y*80+40);
+				g2d.drawString("    King", x*80, y*80+40);
 
 			}
 			if(board[x][y]==3){
@@ -319,7 +319,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Bishop", x*80, y*80+40);
+				g2d.drawString("  Bishop", x*80, y*80+40);
 
 			}
 			if(board[x][y]==6){
@@ -327,7 +327,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Knight", x*80, y*80+40);
+				g2d.drawString("   Knight", x*80, y*80+40);
 
 			}
 			if(board[x][y]==8){
@@ -335,7 +335,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Rook", x*80, y*80+40);
+				g2d.drawString("    Rook", x*80, y*80+40);
 
 			}
 			if(board[x][y]==9){
@@ -343,7 +343,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==10){
@@ -351,7 +351,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==11){
@@ -359,7 +359,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==12){
@@ -367,14 +367,14 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 			}
 			if(board[x][y]==13){
 				g2d.setColor(Color.blue);
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==14){
@@ -382,7 +382,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==15){
@@ -390,7 +390,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			if(board[x][y]==16){
@@ -398,7 +398,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString(" Pawn", x*80, y*80+40);
+				g2d.drawString("    Pawn", x*80, y*80+40);
 
 			}
 			
