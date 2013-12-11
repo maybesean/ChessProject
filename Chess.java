@@ -46,21 +46,31 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 
 	
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent event) {
 	
 		
 	}
 
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent event) {
 	}
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(MouseEvent event) {
 			
 	}
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(MouseEvent event) {
+			
+				oldx = event.getX()/80;
+				oldy = event.getY()/80;
+				pieceSelected = board[oldx][oldy];
+				System.out.print(pieceSelected+""+oldx+""+oldy);
+				
+				
+			
+			
+	}
+	public void mouseReleased(MouseEvent event) {
+			if(event.getButton()==1){
 
-	}
-	public void mouseReleased(MouseEvent arg0) {
-			
+			}
 	}
 	public void paintComponent(Graphics g){
 		
@@ -70,6 +80,15 @@ class ChessWidget extends JComponent implements  MouseListener{
         drawPieces(g2d); 
 		
 	}
+	public void attemptMove(int x, int y, int current_player){
+
+
+
+
+	}
+
+
+
 	public void drawGrid(Graphics2D g2d){
 	
 		
@@ -448,7 +467,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 			int blackpawn8 = 32;
 		
 			
-			
+			int oldx,oldy,newx,newy;
+			int pieceSelected;
 			int current_player;					// denotes who the current player is
 			boolean inPlay;						// indicates if the game is being played at the moment
 			Color black,white,brown,red;
