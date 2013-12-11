@@ -43,6 +43,9 @@ class ChessWidget extends JComponent implements  MouseListener{
 		white = new Color(255, 255, 255);
 		board = new int[8][8];
 		
+		
+		// set a mouse listener for this widget
+				addMouseListener(this);
 	}
 
 	
@@ -58,19 +61,21 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 	public void mousePressed(MouseEvent event) {
 			
+				//checking what piece is selected
 				oldx = event.getX()/80;
 				oldy = event.getY()/80;
 				pieceSelected = board[oldx][oldy];
-				System.out.print(pieceSelected+""+oldx+""+oldy);
+				System.out.println(pieceSelected);
 				
 				
 			
 			
 	}
 	public void mouseReleased(MouseEvent event) {
-			if(event.getButton()==1){
-
-			}
+			newx= event.getX()/80;
+			newy=event.getY()/80;
+			attemptMove(newx,newy,oldx,oldy,current_player);
+			System.out.print(newx+""+newy);
 	}
 	public void paintComponent(Graphics g){
 		
@@ -80,9 +85,10 @@ class ChessWidget extends JComponent implements  MouseListener{
         drawPieces(g2d); 
 		
 	}
-	public void attemptMove(int x, int y, int current_player){
-
-
+	public void attemptMove(int x1, int y1,int x2, int y2, int current_player){
+			board[x2][y2]=0;
+			board[x1][y1]=pieceSelected;
+			repaint();
 
 
 	}
