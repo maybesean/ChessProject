@@ -42,7 +42,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		black = new Color(0, 0, 0);
 		white = new Color(255, 255, 255);
 		board = new int[8][8];
-		
+		initialState();
 		
 		// set a mouse listener for this widget
 				addMouseListener(this);
@@ -81,11 +81,15 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 		Graphics2D g2d = (Graphics2D) g;
         drawGrid(g2d);
-        initialState();
+      
         drawPieces(g2d); 
 		
 	}
 	public void attemptMove(int x1, int y1,int x2, int y2, int current_player){
+		//need to check if game is in play
+		//need to check if player is in check
+		//need to check if position is occupied
+		
 			board[x2][y2]=0;
 			board[x1][y1]=pieceSelected;
 			repaint();
