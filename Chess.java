@@ -164,6 +164,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 			   board[7][6] = 16;
 		// set the current player to be 1 the scores to 2 all and the game to be in play
 				current_player = 1;		
+				
+	
 	}
 	
 	public void drawPieces(Graphics2D g2d){
@@ -482,11 +484,4 @@ class ChessWidget extends JComponent implements  MouseListener{
 			Color black,white,brown,red;
 			int board[][];
 			int currentPlayer;
-			
-			public abstract class Piece{
-				
-				
-			}
-			//make classes for pieces
 }
-
