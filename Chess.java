@@ -65,8 +65,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 				oldx = event.getX()/80;
 				oldy = event.getY()/80;
 				pieceSelected = board[oldx][oldy];
-				System.out.println(pieceSelected);
-				
+			//	System.out.println(pieceSelected);
+				System.out.println(oldx+" "+oldx);
 				
 			
 			
@@ -75,13 +75,12 @@ class ChessWidget extends JComponent implements  MouseListener{
 			newx= event.getX()/80;
 			newy=event.getY()/80;
 			attemptMove(newx,newy,oldx,oldy,current_player);
-			System.out.print(newx+""+newy);
+			//System.out.println(newx+" "+newy);
 	}
 	public void paintComponent(Graphics g){
 		
 		Graphics2D g2d = (Graphics2D) g;
         drawGrid(g2d);
-      
         drawPieces(g2d); 
 		
 	}
@@ -93,7 +92,34 @@ class ChessWidget extends JComponent implements  MouseListener{
 			board[x2][y2]=0;
 			board[x1][y1]=pieceSelected;
 			repaint();
-
+			
+			
+			//pawn
+			if((pieceSelected>=9&&pieceSelected<=16) || (pieceSelected>=25&&pieceSelected<=32)){
+				//2 spaces move 
+			}
+			//Bishop
+			if((pieceSelected>=3&&pieceSelected<=4) || (pieceSelected>=19&&pieceSelected<=20)){
+				
+			}
+			//Knight
+			if((pieceSelected>=5&&pieceSelected<=6) || (pieceSelected>=21&&pieceSelected<=22)){
+				
+			}
+			//Rook
+			if((pieceSelected>=7&&pieceSelected<=8) || (pieceSelected>=23&&pieceSelected<=24)){
+				
+			}
+			//Queen
+			if(pieceSelected==2||pieceSelected==18){
+				
+			}
+			//King
+			if(pieceSelected==1||pieceSelected==17){
+				
+			}
+			
+			
 
 	}
 
