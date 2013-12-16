@@ -84,19 +84,19 @@ class ChessWidget extends JComponent implements  MouseListener{
         drawPieces(g2d); 
 		
 	}
-	public void attemptMove(int x1, int y1,int x2, int y2, int current_player){
+	public void attemptMove(int newX, int newY, int oldX, int oldY, int current_player){
 		//need to check if game is in play
 		//need to check if player is in check
 		//need to check if position is occupied
 		
-			board[x2][y2]=0;
-			board[x1][y1]=pieceSelected;
+			board[oldX][oldY]=0;
+			board[newX][newY]=pieceSelected;
 			repaint();
 			
 			
 			//pawn
 			if((pieceSelected>=9&&pieceSelected<=16) || (pieceSelected>=25&&pieceSelected<=32)){
-				//2 spaces move 
+					
 			}
 			//Bishop
 			if((pieceSelected>=3&&pieceSelected<=4) || (pieceSelected>=19&&pieceSelected<=20)){
@@ -118,11 +118,14 @@ class ChessWidget extends JComponent implements  MouseListener{
 			if(pieceSelected==1||pieceSelected==17){
 				
 			}
-			
-			
-
 	}
-
+	public void movePawn(int newX, int newY,int oldX, int oldY, int current_player){
+			
+		
+	}
+	
+	
+	
 
 
 	public void drawGrid(Graphics2D g2d){
