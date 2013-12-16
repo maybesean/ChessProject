@@ -89,10 +89,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		//need to check if player is in check
 		//need to check if position is occupied
 		
-//			board[oldX][oldY]=0;
-//			board[newX][newY]=pieceSelected;
-//			repaint();
-			
+
 			
 			//pawn
 			if((pieceSelected>=9&&pieceSelected<=16) || (pieceSelected>=25&&pieceSelected<=32)){
@@ -100,7 +97,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 			//Bishop
 			if((pieceSelected>=3&&pieceSelected<=4) || (pieceSelected>=19&&pieceSelected<=20)){
-				
+				   moveBishop(newx,newy,oldx,oldy,current_player);
 			}
 			//Knight
 			if((pieceSelected>=5&&pieceSelected<=6) || (pieceSelected>=21&&pieceSelected<=22)){
@@ -134,6 +131,56 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 	}
 	
+	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){
+		int dx = newx- oldx;
+		int dy = newy - oldy;
+		
+		 if ((dx == dy) || (dx == -dy)) {
+		      if ((dx > 0) && (dy > 0)) {
+		          for (int i = 1; i <= dx; i++) {
+		            if (board[oldX + i - 1][oldY + i - 1] !=1) {
+		            	board[oldX][oldY]=0;
+						board[newX][newY]=pieceSelected;
+						repaint();
+		            }
+		          }
+		          
+		      }
+		      else if ((dx > 0) && (dy < 0)) {
+		        for (int i = 1; i <= dx; i++) {
+		          if (board[oldX + i - 1][oldY - i - 1] != 1) {
+		        	  board[oldX][oldY]=0;
+						board[newX][newY]=pieceSelected;
+						repaint();
+		          }
+		        }
+		       
+		      }
+		      else if ((dx < 0) && (dy > 0)) {
+		        for (int i = -1; i >= dx; i--) {
+		          if (board[oldX + i - 1][oldY - i - 1] != 1) {
+		        	  board[oldX][oldY]=0;
+						board[newX][newY]=pieceSelected;
+						repaint();
+		          }
+		        }
+		      
+		      }
+		      else {
+		        for (int i = -1; i >= dx; i--) {
+		          if (board[oldX + i - 1][oldY + i - 1] != 1) {
+		        	  board[oldX][oldY]=0;
+						board[newX][newY]=pieceSelected;
+						repaint();
+		          }
+		        }
+				        board[oldX][oldY]=0;
+						board[newX][newY]=pieceSelected;
+						repaint();
+		      }
+		    }
+		  
+		  }
 	
 	
 
