@@ -89,14 +89,14 @@ class ChessWidget extends JComponent implements  MouseListener{
 		//need to check if player is in check
 		//need to check if position is occupied
 		
-			board[oldX][oldY]=0;
-			board[newX][newY]=pieceSelected;
-			repaint();
+//			board[oldX][oldY]=0;
+//			board[newX][newY]=pieceSelected;
+//			repaint();
 			
 			
 			//pawn
 			if((pieceSelected>=9&&pieceSelected<=16) || (pieceSelected>=25&&pieceSelected<=32)){
-					
+					movePawn(newx,newy,oldx,oldy,current_player);
 			}
 			//Bishop
 			if((pieceSelected>=3&&pieceSelected<=4) || (pieceSelected>=19&&pieceSelected<=20)){
@@ -120,7 +120,17 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 	}
 	public void movePawn(int newX, int newY,int oldX, int oldY, int current_player){
+			int dx = newx- oldx;
+			int dy = newy - oldy;
 			
+			if((dx==0)&&(dy==-1)&&board[newX-1][newY-1]==0){
+				board[oldX][oldY]=0;
+				board[newX][newY]=pieceSelected;
+				repaint();
+			}
+			else{
+				System.out.print("INVALID MOVE");
+			}
 		
 	}
 	
