@@ -86,7 +86,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 
 			
 			//pawn
-			if((pieceSelected==11) || (pieceSelected==22)){
+			if((pieceSelected==whitePawn) || (pieceSelected==blackPawn)){
 				movePawn(newx,newy,oldx,oldy,current_player);
 			}
 			//Bishop
@@ -94,8 +94,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 				  
 			}
 			//Knight
-			if((pieceSelected>=5&&pieceSelected<=6) || (pieceSelected>=21&&pieceSelected<=22)){
-				movePawn(newx,newy,oldx,oldy,current_player);
+			if((pieceSelected==whiteKnight) || (pieceSelected==blackKnight)){
+				
 			}
 			//Rook
 			if((pieceSelected>=7&&pieceSelected<=8) || (pieceSelected>=23&&pieceSelected<=24)){
@@ -113,50 +113,53 @@ class ChessWidget extends JComponent implements  MouseListener{
 
 	
 	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){}
-	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){  }
+	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
+			int dx = newX-oldX;
+			int dy = newY-oldY;
+			
+			
+		
+		
+		
+		
+		
+		
+	}
 	public void movePawn(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
 	    int dy = newY - oldY;	
-	   
-	    			if(pieceSelected==11){
-	    			if ((dx == 0) && (dy == -1)){
-	    				board[oldX][oldY]=0;
-	    				board[newX][newY]=pieceSelected;
-	    				repaint();
-	    			}
-	    			}
-	    			else{
-	    			if ((dx == 0) && (dy == 1)){
-	    				board[oldX][oldY]=0;
-	    				board[newX][newY]=pieceSelected;
-	    				repaint();
-	    			}
-	    	}
 	    			
-	    			//if the pawn starts, he can move 2
 	    			//blues
-	    			if(oldy==6){
-	    				if ((dx == 0) && (dy == -2)){
-		    				board[oldX][oldY]=0;
-		    				board[newX][newY]=pieceSelected;
-		    				repaint();
+	    		if(pieceSelected==11){
+	    		if ((dx == 0) && (dy == -1)){
+		    			board[oldX][oldY]=0;
+		    			board[newX][newY]=pieceSelected;
+		    			repaint();
 	    			}
-	    				
+	    			//if the pawn is on stating position, move 2 if user desires
+		    			else if((dx == 0) && (dy==-2)){
+		    			board[oldX][oldY]=0;
+		    			board[newX][newY]=pieceSelected;
+		    			repaint();
+	    			}
+	    			}
+	    			
 	    			//reds
-	    			if(oldy==1){
-	    				if ((dx == 0) && (dy == 2)){
-		    				board[oldX][oldY]=0;
-		    				board[newX][newY]=pieceSelected;
-		    				repaint();
-	    				
-	    				
-	    		}
-	    	}
-	    }  		
-	}	
- 
-
-
+	    		if(pieceSelected==22){
+	    			if ((dx == 0) && (dy == 1)){
+		    			board[oldX][oldY]=0;
+		    			board[newX][newY]=pieceSelected;
+		    			repaint();
+		    			}
+	    					//if the pawn is on stating position, move 2 if user desires
+		    			else if((dx == 0) && (dy==2)){
+		    			board[oldX][oldY]=0;
+		    			board[newX][newY]=pieceSelected;
+		    			repaint();
+		    			}
+	    			}
+	    	
+	  }
 	public void drawGrid(Graphics2D g2d){
 	
 		
@@ -352,8 +355,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 			int blackKing = 6;  	 
 			int blackQueen = 7; 	 
 			int blackBishop = 8; 
-			int blackKnight = 9; 
-			int blackRook = 10;  
+			int blackKnight = 9; //set to 13
+			int blackRook = 10;   //set to 15
 			int blackPawn = 22;
 		
 			
