@@ -106,8 +106,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 				moveQueen(newx,newy,oldx,oldy,current_player);
 			}
 			//King
-			if(pieceSelected==1||pieceSelected==17){
-				
+			if(pieceSelected==whiteKing||pieceSelected==blackKing){
+				moveKing(newX,newY,oldX,oldY,current_player);
 			}
 	}
 
@@ -133,7 +133,18 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 			
 		
+		public void moveKing(int newX, int newY,int oldX, int oldY, int current_player){
+		int dx = newX-oldX;
+		int dy = newY-oldY;
 		
+		
+		//Still doesnt take into account the if pieces are in front of it 
+		if(((dy == -1) || (dy == 0) || (dy == 1)) && ((dx == -1) || (dx == 0) || (dx == 1))) {
+			board[oldX][oldY]=0;
+			board[newX][newY]=pieceSelected;
+			repaint();
+		 }
+	}
 	
 	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
 			int dx = newX-oldX;
