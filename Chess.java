@@ -98,8 +98,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 				moveKnight(newx,newy,oldx,oldy,current_player);
 			}
 			//Rook
-			if((pieceSelected>=7&&pieceSelected<=8) || (pieceSelected>=23&&pieceSelected<=24)){
-				
+			if((pieceSelected==whiteRook)|| (pieceSelected==blackRook)){
+				moveRook(newX,newY,oldX,oldY,current_player);
 			}
 			//Queen
 			if(pieceSelected==2||pieceSelected==18){
@@ -130,9 +130,30 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    			repaint();
 				}
 			}
-	}
+		}
 			
+	
+	
+	public void moveRook(int newX, int newY, int oldX, int oldY, int current_player){
+			int dx = newX - oldX;
+			int dy = newY - oldY;
+			
+			if(dx==0){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+			else if(dy==0){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+    		}
+			else{
+				System.out.println("Nope");
+			}
 		
+		
+	}
 		
 	
 	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
