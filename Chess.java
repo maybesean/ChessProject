@@ -118,19 +118,15 @@ class ChessWidget extends JComponent implements  MouseListener{
 			int dy = newY-oldY;
 			
 			
-		
-		
-		
-		
-		
-		
-	}
+			
+			
+		}
 	public void movePawn(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
 	    int dy = newY - oldY;	
 	    			
 	    			//blues
-	    		if(pieceSelected==11){
+	    		if(pieceSelected==whitePawn){
 	    		if ((dx == 0) && (dy == -1)){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
@@ -142,16 +138,16 @@ class ChessWidget extends JComponent implements  MouseListener{
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
 	    			}
-	    			}
+	    	}
 	    			
 	    			//reds
-	    		if(pieceSelected==22){
+	    		if(pieceSelected==blackPawn){
 	    			if ((dx == 0) && (dy == 1)){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
 		    			}
-	    					//if the pawn is on stating position, move 2 if user desires
+	    				//if the pawn is on stating position, move 2 if user desires
 		    			else if((dx == 0) && (dy==2)){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
