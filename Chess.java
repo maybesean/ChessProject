@@ -90,12 +90,12 @@ class ChessWidget extends JComponent implements  MouseListener{
 				movePawn(newx,newy,oldx,oldy,current_player);
 			}
 			//Bishop
-			if((pieceSelected>=3&&pieceSelected<=4) || (pieceSelected>=19&&pieceSelected<=20)){
-				  
+			if((pieceSelected==blackBishop) || (pieceSelected==whiteBishop)){
+				moveBishop(newx,newy,oldx,oldy,current_player);
 			}
 			//Knight
 			if((pieceSelected==whiteKnight) || (pieceSelected==blackKnight)){
-					moveKnight(newX,newY,oldX,oldY,current_player);
+				moveKnight(newx,newy,oldx,oldy,current_player);
 			}
 			//Rook
 			if((pieceSelected>=7&&pieceSelected<=8) || (pieceSelected>=23&&pieceSelected<=24)){
@@ -112,22 +112,44 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 
 	
-	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){}
+	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){
+		int dx = newX-oldX;
+		int dy = newY-oldY;
+			if(pieceSelected==blackBishop){
+				if ((dx == dy) || (dx == -dy)){
+					board[oldX][oldY]=0;
+	    			board[newX][newY]=pieceSelected;
+	    			repaint();
+				}
+			}
+			
+			if(pieceSelected==whiteBishop){
+				if ((dx == dy) || (dx == -dy)){
+					board[oldX][oldY]=0;
+	    			board[newX][newY]=pieceSelected;
+	    			repaint();
+				}
+			}
+	}
+			
+		
+		
+	
 	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
 			int dx = newX-oldX;
 			int dy = newY-oldY;
 			
+			if((((dy == -2) && (dx == -1)) || ((dy == -2) && (dx == 1)) || ((dy == -1) && (dx == 2)) || ((dy == 1) && (dx == 2)) 
+				|| ((dy == 2) && (dx == 1)) || ((dy == 2) && (dx == -1)) || ((dy == 1) && (dx == -2))
+					  || ((dy == -1) && (dx == -2)))){
+						board[oldX][oldY]=0;
+		    			board[newX][newY]=pieceSelected;
+		    			repaint();
+					}
+					
 			
-			//need to set up for taking pieces as only deals with moving 
-			if((((dy == -2) && (dx == -1)) || ((dy == -2) && (dx == 1)) || ((dy == -1) && (dx == 2)) || ((dy == 1) && (dx == 2)) || ((dy == 2) && (dx == 1)) || ((dy == 2) && (dx == -1)) || ((dy == 1) && (dx == -2))
-			  || ((dy == -1) && (dx == -2)))){
-				board[oldX][oldY]=0;
-    			board[newX][newY]=pieceSelected;
-    			repaint();
-			}
-			else{
-				System.out.println("Invalid Move");
-			}
+			
+		}
 	public void movePawn(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
 	    int dy = newY - oldY;	
@@ -211,8 +233,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 			   
 			   //white
 			   board[0][7] = whiteRook;
-			   board[1][7] = whiteKnight ;
-			   board[2][7] = whiteBishop ;
+			   board[1][7] = whiteKnight;
+			   board[2][7] = whiteBishop;
 			   board[3][7] = whiteKing;
 			   board[4][7] = whiteQueen ;
 			   board[5][7] = whiteBishop ;
