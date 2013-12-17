@@ -102,8 +102,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 				moveRook(newX,newY,oldX,oldY,current_player);
 			}
 			//Queen
-			if(pieceSelected==2||pieceSelected==18){
-				
+			if(pieceSelected==whiteQueen||pieceSelected==blackQueen){
+				moveQueen(newx,newy,oldx,oldy,current_player);
 			}
 			//King
 			if(pieceSelected==1||pieceSelected==17){
@@ -130,30 +130,9 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    			repaint();
 				}
 			}
-		}
-			
-	
-	
-	public void moveRook(int newX, int newY, int oldX, int oldY, int current_player){
-			int dx = newX - oldX;
-			int dy = newY - oldY;
-			
-			if(dx==0){
-				board[oldX][oldY]=0;
-    			board[newX][newY]=pieceSelected;
-    			repaint();
-			}
-			else if(dy==0){
-				board[oldX][oldY]=0;
-    			board[newX][newY]=pieceSelected;
-    			repaint();
-    		}
-			else{
-				System.out.println("Nope");
-			}
-		
-		
 	}
+			
+		
 		
 	
 	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
@@ -167,9 +146,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
 					}
-					
-			
-			
 		}
 	public void movePawn(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
@@ -206,6 +182,67 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    			}
 	    	
 	  }
+	
+	public void moveQueen(int newX, int newY, int oldX, int oldY, int current_player){
+		int dx = newX - oldX; 
+		int dy = newY - oldY;
+		 
+		if(pieceSelected==whiteQueen){
+			System.out.print("Yay");
+			if((dx ==dy) || (dx == -dy)){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+			
+			if ((dx==0)||(dy==0)){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+		}
+		
+		if(pieceSelected==blackQueen){
+			System.out.print("Yay");
+			if((dx ==dy) || (dx == -dy)){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+			
+			if ((dx==0)||(dy==0)){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+		}
+		
+		
+		
+		
+	}
+	
+	public void moveRook(int newX, int newY, int oldX, int oldY, int current_player){
+		int dx = newX - oldX;
+		int dy = newY - oldY;
+		
+		if(dx==0){
+			board[oldX][oldY]=0;
+			board[newX][newY]=pieceSelected;
+			repaint();
+		}
+		else if(dy==0){
+			board[oldX][oldY]=0;
+			board[newX][newY]=pieceSelected;
+			repaint();
+		}
+		
+	
+	
+}
+	
+	
+	
 	public void drawGrid(Graphics2D g2d){
 	
 		
