@@ -6,11 +6,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-
-
 public class Chess extends JFrame{
 		
 		public Chess(){
@@ -23,8 +20,6 @@ public class Chess extends JFrame{
 		
 		}
 	
-
-
 public static void main(String[] args) {
 	// create a main object and make it visible
 	Chess object = new Chess();
@@ -91,16 +86,16 @@ class ChessWidget extends JComponent implements  MouseListener{
 
 			
 			//pawn
-			if((pieceSelected>=9&&pieceSelected<=16) || (pieceSelected>=25&&pieceSelected<=32)){
-					
+			if((pieceSelected==11) || (pieceSelected==22)){
+				movePawn(newx,newy,oldx,oldy,current_player);
 			}
 			//Bishop
 			if((pieceSelected>=3&&pieceSelected<=4) || (pieceSelected>=19&&pieceSelected<=20)){
-				   moveBishop(newx,newy,oldx,oldy,current_player);
+				  
 			}
 			//Knight
 			if((pieceSelected>=5&&pieceSelected<=6) || (pieceSelected>=21&&pieceSelected<=22)){
-				moveKnight(newx,newy,oldx,oldy,current_player);
+				movePawn(newx,newy,oldx,oldy,current_player);
 			}
 			//Rook
 			if((pieceSelected>=7&&pieceSelected<=8) || (pieceSelected>=23&&pieceSelected<=24)){
@@ -117,74 +112,49 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 
 	
-	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){
-		int dx = newx- oldx;
-		int dy = newy - oldy;
-		
-		 if ((dx == dy) || (dx == -dy)) {
-		      if ((dx > 0) && (dy > 0)) {
-		          for (int i = 1; i <= dx; i++) {
-		            if (board[oldX + i - 1][oldY + i - 1] != 1) {
-		            	board[oldX][oldY]=0;
-						board[newX][newY]=pieceSelected;
-						repaint();
-		            }
-		          }
-		      }
-		      else if ((dx > 0) && (dy < 0)) {
-		        for (int i = 1; i <= dx; i++) {
-		          if (board[oldX + i - 1][oldY - i - 1] != 1) {
-		        	  board[oldX][oldY]=0;
-						board[newX][newY]=pieceSelected;
-						repaint();
-		          }
-		        }
-		     
-		      }
-		      else if ((dx < 0) && (dy > 0)) {
-		        for (int i = -1; i >= dx; i--) {
-		          if (board[oldX + i - 1][oldY - i - 1] != 1) {
-		        	  board[oldX][oldY]=0;
-						board[newX][newY]=pieceSelected;
-						repaint();
-		          }
-		        }
-		        
-		      }
-		      else {
-		        for (int i = -1; i >= dx; i--) {
-		          if (board[oldX + i - 1][oldY + i - 1] != 1) {
-		        	  board[oldX][oldY]=0;
-						board[newX][newY]=pieceSelected;
-						repaint();
-		          }
-		      }
-		    
-		   }
-      }
-}
-	
-	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
+	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){}
+	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){  }
+	public void movePawn(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
-	    int dy = newY - oldY;
-		
-	    if ((((dy == -2) && (dx == -1)) || ((dy == -2) && (dx == 1)) || ((dy == -1)
-	            && (dx == 2)) || ((dy == 1) && (dx == 2)) || ((dy == 2) && (dx == 1))
-	            || ((dy == 2) && (dx == -1)) || ((dy == 1) && (dx == -2))
-	            || ((dy == -1) && (dx == -2)))
-	            && (board[newX - 1][newY - 1] == 0)) {
-		    	board[oldX][oldY]=0;
-				board[newX][newY]=pieceSelected;
-				repaint();
-	        }
-	    
-	    else{
-	    	System.out.print("Invalid move");
-	    }
-	    
-	    
-	       
-	}
+	    int dy = newY - oldY;	
+	   
+	    			if(pieceSelected==11){
+	    			if ((dx == 0) && (dy == -1)){
+	    				board[oldX][oldY]=0;
+	    				board[newX][newY]=pieceSelected;
+	    				repaint();
+	    			}
+	    			}
+	    			else{
+	    			if ((dx == 0) && (dy == 1)){
+	    				board[oldX][oldY]=0;
+	    				board[newX][newY]=pieceSelected;
+	    				repaint();
+	    			}
+	    	}
+	    			
+	    			//if the pawn starts, he can move 2
+	    			//blues
+	    			if(oldy==6){
+	    				if ((dx == 0) && (dy == -2)){
+		    				board[oldX][oldY]=0;
+		    				board[newX][newY]=pieceSelected;
+		    				repaint();
+	    			}
+	    				
+	    			//reds
+	    			if(oldy==1){
+	    				if ((dx == 0) && (dy == 2)){
+		    				board[oldX][oldY]=0;
+		    				board[newX][newY]=pieceSelected;
+		    				repaint();
+	    				
+	    				
+	    		}
+	    	}
+	    }  		
+	}	
+ 
 
 
 	public void drawGrid(Graphics2D g2d){
@@ -216,40 +186,40 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 			
 			   //black
-			   board[0][0] = 24;
-			   board[1][0] = 22;
-			   board[2][0] = 19;
-			   board[3][0] = 18;
-			   board[4][0] = 17;
-			   board[5][0] = 20;
-			   board[6][0] = 21;
-			   board[7][0] = 23;
-			   board[0][1] = 25;
-			   board[1][1] = 26;
-			   board[2][1] = 27;
-			   board[3][1] = 28;
-			   board[4][1] = 29;
-			   board[5][1] = 30;
-			   board[6][1] = 31;
-			   board[7][1] = 32;
+			   board[0][0] = blackRook;							
+			   board[1][0] = blackKnight ;
+			   board[2][0] = blackBishop ;
+			   board[3][0] = blackQueen;
+			   board[4][0] = blackKing;
+			   board[5][0] = blackBishop;
+			   board[6][0] = blackKnight;
+			   board[7][0] = blackRook ;
+			   board[0][1] = blackPawn ;
+			   board[1][1] = blackPawn ;
+			   board[2][1] = blackPawn ;
+			   board[3][1] = blackPawn ;
+			   board[4][1] = blackPawn ;
+			   board[5][1] = blackPawn ;
+			   board[6][1] = blackPawn ;
+			   board[7][1] = blackPawn ;
 			   
 			   //white
-			   board[0][7] = 7;
-			   board[1][7] = 5;
-			   board[2][7] = 4;
-			   board[3][7] = 2;
-			   board[4][7] = 1;
-			   board[5][7] = 3;
-			   board[6][7] = 6;
-			   board[7][7] = 8;
-			   board[0][6] = 9;
-			   board[1][6] = 10;
-			   board[2][6] = 11;
-			   board[3][6] = 12;
-			   board[4][6] = 13;
-			   board[5][6] = 14;
-			   board[6][6] = 15;
-			   board[7][6] = 16;
+			   board[0][7] = whiteRook;
+			   board[1][7] = whiteKnight ;
+			   board[2][7] = whiteBishop ;
+			   board[3][7] = whiteKing;
+			   board[4][7] = whiteQueen ;
+			   board[5][7] = whiteBishop ;
+			   board[6][7] = whiteKnight ;
+			   board[7][7] = whiteRook;
+			   board[0][6] = whitePawn ;
+			   board[1][6] = whitePawn ;
+			   board[2][6] = whitePawn ;
+			   board[3][6] = whitePawn ;
+			   board[4][6] = whitePawn ;
+			   board[5][6] = whitePawn ;
+			   board[6][6] = whitePawn ;
+			   board[7][6] = whitePawn ;
 		// set the current player to be 1 the scores to 2 all and the game to be in play
 				current_player = 1;		
 				
@@ -259,268 +229,112 @@ class ChessWidget extends JComponent implements  MouseListener{
 	public void drawPieces(Graphics2D g2d){
 		for(int x = 0; x < 8; x++) {
 			for(int y = 0; y < 8; y++) {
-			//reds
-			if(board[x][y]==24){
+			//white pieces 
+				
+				//white pawns
+			if(board[x][y]==whitePawn){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Pawn"  , x*80,y*80+40);
+			}
+			// white king 
+			if(board[x][y]==whiteKing){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   King"  , x*80,y*80+40);
+			}
+			//white queen 			
+			if(board[x][y]==whiteQueen){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Queen"  , x*80,y*80+40);
+
+			}
+			// white bishops 
+			if(board[x][y]==whiteBishop){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Bishop"  , x*80,y*80+40);
+				}
+			//	white knight
+			if(board[x][y]==whiteKnight){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Knight"  , x*80,y*80+40);
+
+				}
+			//white rook
+			if(board[x][y]==whiteRook){
+				g2d.setColor(Color.blue);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Rook"  , x*80,y*80+40);
+				}
+			
+			//black pieces 
+			
+			
+			// black pawns 
+			if(board[x][y]==blackPawn){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Pawn"  , x*80,y*80+40);
+				}
+			//	black king 
+			if(board[x][y]==blackKing){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   King"  , x*80,y*80+40);
+
+				}
+			//	black queen 
+			if(board[x][y]==blackQueen){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Queen"  , x*80,y*80+40);
+				}
+			//	black bishop
+			if(board[x][y]==blackBishop){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+			    g2d.drawString("   Bishop"  , x*80,y*80+40);
+				}
+			// black knight 
+			if(board[x][y]==blackKnight){
+				g2d.setColor(Color.red);
+				g2d.fillOval(x*80, y*80, 80, 80);
+				g2d.setColor(white);
+				g2d.setFont(new Font("Arial", Font.BOLD, 18));
+		  	  g2d.drawString("   Knight"  , x*80,y*80+40);
+				}
+			//	black rook 
+			if(board[x][y]==blackRook){
 				g2d.setColor(Color.red);
 				g2d.fillOval(x*80, y*80, 80, 80);
 				g2d.setColor(white);
 				g2d.setFont(new Font("Arial", Font.BOLD, 18));
 			    g2d.drawString("   Rook"  , x*80,y*80+40);
-
+				}
 			}
-			
-			if(board[x][y]==22){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Knight", x*80, y*80+40);
-				
-			}
-			if(board[x][y]==19){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Bishop", x*80, y*80+40);
-
-			}
-			if(board[x][y]==18){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Queen", x*80, y*80+40);
-
-			}
-			if(board[x][y]==17){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   King", x*80, y*80+40);
-
-			}
-			if(board[x][y]==20){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Bishop", x*80, y*80+40);
-
-			}
-			if(board[x][y]==21){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Knight", x*80, y*80+40);
-
-			}
-			if(board[x][y]==23){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Rook", x*80, y*80+40);
-
-			}
-			if(board[x][y]==25){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==26){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==27){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==28){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==29){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==30){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==31){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==32){
-				g2d.setColor(Color.red);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Pawn", x*80, y*80+40);
-
-			}
-			
-			//blues
-			if(board[x][y]==7){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Rook", x*80, y*80+40);
-
-			}
-			if(board[x][y]==5){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Knight", x*80, y*80+40);
-
-			}
-			if(board[x][y]==4){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Bishop", x*80, y*80+40);
-
-			}
-			if(board[x][y]==2){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Queen", x*80, y*80+40);
-
-			}
-			if(board[x][y]==1){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    King", x*80, y*80+40);
-
-			}
-			if(board[x][y]==3){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("  Bishop", x*80, y*80+40);
-
-			}
-			if(board[x][y]==6){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("   Knight", x*80, y*80+40);
-
-			}
-			if(board[x][y]==8){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Rook", x*80, y*80+40);
-
-			}
-			if(board[x][y]==9){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==10){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==11){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==12){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-			}
-			if(board[x][y]==13){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==14){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==15){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			if(board[x][y]==16){
-				g2d.setColor(Color.blue);
-				g2d.fillOval(x*80, y*80, 80, 80);
-				g2d.setColor(white);
-				g2d.setFont(new Font("Arial", Font.BOLD, 18));
-				g2d.drawString("    Pawn", x*80, y*80+40);
-
-			}
-			
-			
-		}
 		}
 	}
 	
@@ -530,39 +344,17 @@ class ChessWidget extends JComponent implements  MouseListener{
 			//white pieces	
 			int whiteKing = 1;
 			int whiteQueen = 2;
-			int whiteEastBishop = 3;
-			int whiteWestBishop = 4;
-			int whiteWestKnight = 5;
-			int whiteEastKnight = 6;
-			int whiteWestRook = 7; 
-			int whiteEastRook = 8; 
-			int whitepawn1=9;
-			int whitepawn2=10;
-			int whitepawn3=11;
-			int whitepawn4=12;
-			int whitepawn5=13;
-			int whitepawn6=14;
-			int whitepawn7=15;
-			int whitepawn8=16;
-			
-			
+			int whiteBishop = 3;
+			int whiteKnight = 4;
+			int whiteRook = 5; 
+			int whitePawn = 11; 
 			//black pieces
-			int blackKing = 17;
-			int blackQueen = 18;
-			int blackEastBishop = 19;
-			int blackWestBishop = 20;
-			int blackWestKnight = 21;
-			int blackEastKnight = 22;
-			int blackWestRook = 23; 
-			int blackEastRook = 24; 
-			int blackpawn1 = 25;
-			int blackpawn2 = 26;
-			int blackpawn3 = 27;
-			int blackpawn4 = 28;
-			int blackpawn5 = 29;
-			int blackpawn6 = 30;
-			int blackpawn7 = 31;
-			int blackpawn8 = 32;
+			int blackKing = 6;  	 
+			int blackQueen = 7; 	 
+			int blackBishop = 8; 
+			int blackKnight = 9; 
+			int blackRook = 10;  
+			int blackPawn = 22;
 		
 			
 			int oldx,oldy,newx,newy;
