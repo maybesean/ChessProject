@@ -69,7 +69,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			newx= event.getX()/80;
 			newy=event.getY()/80;
 			attemptMove(newx,newy,oldx,oldy,current_player);
-			//System.out.println(newx+" "+newy);
+			
 	}
 	public void paintComponent(Graphics g){
 		
@@ -83,7 +83,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 		//need to check if player is in check
 		//need to check if position is occupied
 		
-
 			
 			//pawn
 			if((pieceSelected==whitePawn&&current_player==1) || (pieceSelected==blackPawn&&current_player==2)){
@@ -213,22 +212,22 @@ class ChessWidget extends JComponent implements  MouseListener{
 		int dx = newX - oldX; 
 		int dy = newY - oldY;
 		 
-		if(pieceSelected==whiteQueen){
-			System.out.print("Yay");
-			if((dx ==dy) || (dx == -dy)){
-				board[oldX][oldY]=0;
-    			board[newX][newY]=pieceSelected;
-    			repaint();
-			}
-			
-			if ((dx==0)||(dy==0)){
-				board[oldX][oldY]=0;
-    			board[newX][newY]=pieceSelected;
-    			repaint();
-			}
-		}
 		
-		if(pieceSelected==blackQueen){
+		
+			if((dx ==dy) || (dx == -dy)){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+			
+			if ((dx==0)||(dy==0)){
+				board[oldX][oldY]=0;
+    			board[newX][newY]=pieceSelected;
+    			repaint();
+			}
+		
+		
+		
 			System.out.print("Yay");
 			if((dx ==dy) || (dx == -dy)){
 				board[oldX][oldY]=0;
@@ -241,7 +240,7 @@ class ChessWidget extends JComponent implements  MouseListener{
     			board[newX][newY]=pieceSelected;
     			repaint();
 			}
-		}
+		
 		
 		
 		
@@ -266,7 +265,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 	
 	
 }
-	
 	
 	
 	public void drawGrid(Graphics2D g2d){
