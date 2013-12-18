@@ -86,34 +86,36 @@ class ChessWidget extends JComponent implements  MouseListener{
 
 			
 			//pawn
-			if((pieceSelected==whitePawn) || (pieceSelected==blackPawn)){
+			if((pieceSelected==whitePawn&&current_player==1) || (pieceSelected==blackPawn&&current_player==2)){
 				movePawn(newx,newy,oldx,oldy,current_player);
+				swapPlayers();
 				
 			}
 			//Bishop
-			if((pieceSelected==blackBishop) || (pieceSelected==whiteBishop)){
+			if((pieceSelected==blackBishop&&current_player==1) || (pieceSelected==whiteBishop&&current_player==2)){
 				moveBishop(newx,newy,oldx,oldy,current_player);
 				swapPlayers(); 
 			}
 			//Knight
-			if((pieceSelected==whiteKnight) || (pieceSelected==blackKnight)){
+			if((pieceSelected==whiteKnight&&current_player==1) || (pieceSelected==blackKnight&&current_player==2)){
 				moveKnight(newx,newy,oldx,oldy,current_player);
+				swapPlayers(); 
 			}
 			//Rook
-			if((pieceSelected==whiteRook)|| (pieceSelected==blackRook)){
+			if((pieceSelected==whiteRook&&current_player==1)|| (pieceSelected==blackRook&&current_player==2)){
 				moveRook(newX,newY,oldX,oldY,current_player);
+				swapPlayers(); 
 			}
 			//Queen
-			if(pieceSelected==whiteQueen||pieceSelected==blackQueen){
+			if(pieceSelected==whiteQueen&&current_player==1||pieceSelected==blackQueen&&current_player==2){
 				moveQueen(newx,newy,oldx,oldy,current_player);
+				swapPlayers(); 
 			}
 			//King
-			if(pieceSelected==whiteKing||pieceSelected==blackKing){
+			if(pieceSelected==whiteKing&&current_player==1||pieceSelected==blackKing&&current_player==2){
 				moveKing(newX,newY,oldX,oldY,current_player);
+				swapPlayers(); 
 			}	
-			
-			
-			
 			
 	}
 
@@ -122,7 +124,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		int dx = newX-oldX;
 		int dy = newY-oldY;
 			
-			if(pieceSelected==blackBishop&&current_player==2){
+			if(pieceSelected==blackBishop){
 				if ((dx == dy) || (dx == -dy)){
 					board[oldX][oldY]=0;
 	    			board[newX][newY]=pieceSelected;
@@ -131,7 +133,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 
 			
-			if(current_player==1&&current_player==1){
+			if(current_player==1){
 			if(pieceSelected==whiteBishop){
 				if ((dx == dy) || (dx == -dy)){
 					board[oldX][oldY]=0;
@@ -453,6 +455,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 	
 	private void swapPlayers(){
+		if(board[oldx][oldy]==0){
 		if(current_player == 1)
 			current_player = 2;
 		else
@@ -460,7 +463,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		System.out.println("current player is player " + current_player);
 		
 	}
-	
+	}
 
 	
 	
