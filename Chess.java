@@ -60,7 +60,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				oldy = event.getY()/80;
 				pieceSelected = board[oldx][oldy];
 			    System.out.println(pieceSelected);
-				System.out.println(oldx+" "+oldx);
+				System.out.println(oldx+" "+oldy);
 				
 			
 			
@@ -164,13 +164,13 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    			
 	    			//blues
 	    		if(pieceSelected==whitePawn){
-	    		if ((dx == 0) && (dy == -1)){
+	    			if ((dx == 0) && (dy == -1)){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
 	    			}
 	    			//if the pawn is on stating position, move 2 if user desires
-		    			else if((dx == 0) && (dy==-2)){
+		    			else if((dx == 0) && (oldy==6)){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
@@ -185,7 +185,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		    			repaint();
 		    			}
 	    				//if the pawn is on stating position, move 2 if user desires
-		    			else if((dx == 0) && (dy==2)){
+		    			else if((dx == 0) && (oldy==1)){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
@@ -194,7 +194,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    	
 	  }
 	
-	public void moveQueen(int newX, int newY, int oldX, int oldY, int current_player){
+		public void moveQueen(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX; 
 		int dy = newY - oldY;
 		 
