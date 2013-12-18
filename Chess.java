@@ -164,13 +164,13 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    			
 	    			//blues
 	    		if(pieceSelected==whitePawn){
-	    			if ((dx == 0) && (dy == -1)){
+	    			if ((dx == 0) && (dy == -1) && board[newX][newY]==0){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
 	    			}
 	    			//if the pawn is on stating position, move 2 if user desires
-		    			else if((dx == 0) && (oldy==6)){
+		    			else if((dx == 0) && (oldy==6) && board[newX][newY]==0){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
@@ -179,13 +179,13 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    			
 	    			//reds
 	    		if(pieceSelected==blackPawn){
-	    			if ((dx == 0) && (dy == 1)){
+	    			if ((dx == 0) && (dy == 1) && board[newX][newY]==0){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
 		    			}
 	    				//if the pawn is on stating position, move 2 if user desires
-		    			else if((dx == 0) && (oldy==1)){
+		    			else if((dx == 0) && (oldy==1) && board[newX][newY]==0){
 		    			board[oldX][oldY]=0;
 		    			board[newX][newY]=pieceSelected;
 		    			repaint();
