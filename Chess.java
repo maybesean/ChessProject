@@ -30,9 +30,6 @@ public static void main(String[] args) {
 }
 class ChessWidget extends JComponent implements  MouseListener{
 	//creating public variables 
-	
-	
-	
 	public ChessWidget(){
 		black = new Color(0, 0, 0);
 		white = new Color(255, 255, 255);
@@ -66,9 +63,9 @@ class ChessWidget extends JComponent implements  MouseListener{
 			
 	}
 	public void mouseReleased(MouseEvent event) {
-			newx= event.getX()/80;
-			newy=event.getY()/80;
-			attemptMove(newx,newy,oldx,oldy,current_player);
+				newx= event.getX()/80;
+				newy=event.getY()/80;
+				attemptMove(newx,newy,oldx,oldy,current_player);
 			
 	}
 	public void paintComponent(Graphics g){
@@ -83,7 +80,18 @@ class ChessWidget extends JComponent implements  MouseListener{
 		//need to check if player is in check
 		//need to check if position is occupied
 		
-			
+		// check if there is an opponents piece in any of the adjacent squares, if not then ignore the move
+				boolean opposing_found = false;
+				for(int dx = -1; dx < 2; dx++) {
+					for(int dy = -1; dy < 2; dy++) {
+						if(current_player == 1 && checkPiece(dx, dy) == 0) {
+							opposing_found = true;
+						} else if(current_player == 2 && checkPiece(dx,dy) == 1) {
+							opposing_found = true;
+						}
+					}
+				}
+		
 			//pawn
 			if((pieceSelected==whitePawn&&current_player==1) || (pieceSelected==blackPawn&&current_player==2)){
 				movePawn(newx,newy,oldx,oldy,current_player);
@@ -94,6 +102,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 			if((pieceSelected==whiteBishop&&current_player==1) || (pieceSelected==blackBishop&&current_player==2)){
 				moveBishop(newx,newy,oldx,oldy,current_player);
 				swapPlayers(); 
+				
+				
 			}
 			//Knight
 			if((pieceSelected==whiteKnight&&current_player==1) || (pieceSelected==blackKnight&&current_player==2)){
@@ -109,6 +119,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			if(pieceSelected==whiteQueen&&current_player==1||pieceSelected==blackQueen&&current_player==2){
 				moveQueen(newx,newy,oldx,oldy,current_player);
 				swapPlayers(); 
+				
 			}
 			//King
 			if(pieceSelected==whiteKing&&current_player==1||pieceSelected==blackKing&&current_player==2){
@@ -116,20 +127,31 @@ class ChessWidget extends JComponent implements  MouseListener{
 				swapPlayers(); 
 			}	
 			
-	}
+		}
+			
+	
+	
+	
+		private int checkPiece(int x, int y) {
+			// check for the out of bounds case first, if everything is in bounds then just return whatever is in the board
+			// position
+			if(x < 0 || x > 7 || y < 0 || y > 7)
+				return -1;
+			else
+				return board[x][y];
+		}
 
 	
 	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){
 		int dx = newX-oldX;
 		int dy = newY-oldY;
-			
-			
+				
 				if ((dx == dy) || (dx == -dy)){
 					board[oldX][oldY]=0;
 	    			board[newX][newY]=pieceSelected;
 	    			repaint();
-				}			
-
+	    			
+				}	
 				if ((dx == dy) || (dx == -dy)){
 					board[oldX][oldY]=0;
 	    			board[newX][newY]=pieceSelected;
@@ -137,11 +159,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    		
 				}
 			}
-		
 	
-	
-			
-		
 		public void moveKing(int newX, int newY,int oldX, int oldY, int current_player){
 		int dx = newX-oldX;
 		int dy = newY-oldY;
@@ -177,6 +195,8 @@ class ChessWidget extends JComponent implements  MouseListener{
     			board[oldX][oldY]=0;
     			board[newX][newY]=pieceSelected;
     			repaint();
+    			//if it reaches the end of the baord, upgrade pawn
+    			upgradePawn(newX,newY, oldX, oldY, current_player);
 			}
 			//if the pawn is on stating position, move 2 if user desires
 			else if(oldy==6){	
@@ -195,6 +215,8 @@ class ChessWidget extends JComponent implements  MouseListener{
     			board[oldX][oldY]=0;
     			board[newX][newY]=pieceSelected;
     			repaint();
+    			//if it reaches the end of the baord, upgrade pawn
+    			upgradePawn(newX,newY, oldX, oldY, current_player);
     			}
 				//if the pawn is on stating position, move 2 if user desires
 			else if(oldy==1){
@@ -212,8 +234,6 @@ class ChessWidget extends JComponent implements  MouseListener{
 		int dx = newX - oldX; 
 		int dy = newY - oldY;
 		 
-		
-		
 			if((dx ==dy) || (dx == -dy)){
 				board[oldX][oldY]=0;
     			board[newX][newY]=pieceSelected;
@@ -225,10 +245,7 @@ class ChessWidget extends JComponent implements  MouseListener{
     			board[newX][newY]=pieceSelected;
     			repaint();
 			}
-		
-		
-		
-			System.out.print("Yay");
+	
 			if((dx ==dy) || (dx == -dy)){
 				board[oldX][oldY]=0;
     			board[newX][newY]=pieceSelected;
@@ -293,6 +310,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	}
 	
 	public void initialState(){
+		
 		
 			
 			   //black
@@ -458,10 +476,86 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 	}
 	}
+	
+	public void upgradePawn(int newX, int newY,int oldX, int oldY, int current_player){
+  
+		//upgrades to a Queen if Pawn reaches end of the board
+  	
+        if(pieceSelected==whitePawn){
+        if(board[0][0]==whitePawn){
+      	 board[0][0] = whiteQueen;
+        }
+        
+        else if(board[1][0]==whitePawn){
+      	  board[1][0] = whiteQueen;
+        }
+        
+        if(board[2][0]==whitePawn){
+      	  board[2][0] = whiteQueen;
+        }
+  
+  
+        if(board[3][0]==whitePawn){
+  		board[4][0] = whiteQueen;
+  	  }
+
+		if(board[4][0]==whitePawn){
+			  board[4][0] = whiteQueen;
+		}
+		
+		if(board[5][0]==whitePawn){
+			  board[5][0] = whiteQueen;
+		}
+		
+		if(board[6][0]==whitePawn){
+			  board[6][0] = whiteQueen;
+		}
+		
+		if(board[7][0]==whitePawn){
+			  board[7][0] = whiteQueen;
+		}
+   }
+        
+      if(pieceSelected==blackPawn){
+      	if(board[0][7]==blackPawn){
+         	 board[0][7] = blackQueen;
+           }
+      	
+      	if(board[1][7]==blackPawn){
+            	 board[1][7] = blackQueen;
+              }
+      	
+      	if(board[2][7]==blackPawn){
+            	 board[2][7] = blackQueen;
+              }
+      	
+      	if(board[3][7]==blackPawn){
+            	 board[3][7] = blackQueen;
+              }
+      	
+      	if(board[4][7]==blackPawn){
+            	 board[4][7] = blackQueen;
+              }
+      	
+      	if(board[5][7]==blackPawn){
+            	 board[5][7] = blackQueen;
+              }
+      	
+      	if(board[6][7]==blackPawn){
+            	 board[6][7] = blackQueen;
+              }
+      	
+      	if(board[7][7]==blackPawn){
+            	 board[7][7] = blackQueen;
+              }
+      	
+      }
+        
+}
 
 	
 	
-	
+			/** private fields **/
 
 			//white pieces	
 			int whiteKing = 1;
