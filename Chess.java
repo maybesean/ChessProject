@@ -81,16 +81,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		//need to check if position is occupied
 		
 		// check if there is an opponents piece in any of the adjacent squares, if not then ignore the move
-				boolean opposing_found = false;
-				for(int dx = -1; dx < 2; dx++) {
-					for(int dy = -1; dy < 2; dy++) {
-						if(current_player == 1 && checkPiece(dx, dy) == 0) {
-							opposing_found = true;
-						} else if(current_player == 2 && checkPiece(dx,dy) == 1) {
-							opposing_found = true;
-						}
-					}
-				}
+	
 		
 			//pawn
 			if((pieceSelected==whitePawn&&current_player==1) || (pieceSelected==blackPawn&&current_player==2)){
