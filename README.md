@@ -1,5 +1,5 @@
 Sean Bourke Mckenna, Conor Mckernan
-2813953, 
+2813953,2813365
 
 
 Attempt Move, Conor
@@ -15,5 +15,5 @@ initialState, Conor
 drawPieces, Sean
 swapPlayers, Conor
 upgradePawn, Sean
-
+checkValid, Conor
 

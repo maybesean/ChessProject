@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 public class Chess extends JFrame{
 		
+	//Create public Chess with size of window and other various settings
 		public Chess(){
 			setSize(655,675);
 			setTitle("Chess");
@@ -28,6 +29,7 @@ public static void main(String[] args) {
 
 
 }
+//Create custom widget and declare initial state
 class ChessWidget extends JComponent implements  MouseListener{
 	//creating public variables 
 	public ChessWidget(){
@@ -42,32 +44,32 @@ class ChessWidget extends JComponent implements  MouseListener{
 
 	
 	public void mouseClicked(MouseEvent event) {
-	
-		
 	}
-
 	public void mouseEntered(MouseEvent event) {
 	}
 	public void mouseExited(MouseEvent event) {
-			
 	}
+	//Gets the location selected and pieces selected
 	public void mousePressed(MouseEvent event) {
-			
 				oldx = event.getX()/80;
 				oldy = event.getY()/80;
 				pieceSelected = board[oldx][oldy];
 			    System.out.println(pieceSelected);
 				System.out.println(oldx+" "+oldy);
-				
-			
-			
 	}
+	//Gets the location and divides by 80 then calls attempt move to check which piece is selected 
 	public void mouseReleased(MouseEvent event) {
 				newx= event.getX()/80;
 				newy=event.getY()/80;
+				
+				if(checkValid(newx,newy)==false){
+					System.out.print("Invalid Move");
+				}
+				else{
 				attemptMove(newx,newy,oldx,oldy,current_player);
-			
+				}
 	}
+	//Declaring paint component 
 	public void paintComponent(Graphics g){
 		
 		Graphics2D g2d = (Graphics2D) g;
@@ -75,26 +77,19 @@ class ChessWidget extends JComponent implements  MouseListener{
         drawPieces(g2d); 
 		
 	}
-	public void attemptMove(int newX, int newY, int oldX, int oldY, int current_player){
-		//need to check if game is in play
-		//need to check if player is in check
-		//need to check if position is occupied
-		
-		// check if there is an opponents piece in any of the adjacent squares, if not then ignore the move
 	
-		
+	//Method that checks what piece was selected by them mouse and what was in that board location. 
+	//Then calls the relevant move method. 
+	public void attemptMove(int newX, int newY, int oldX, int oldY, int current_player){
 			//pawn
 			if((pieceSelected==whitePawn&&current_player==1) || (pieceSelected==blackPawn&&current_player==2)){
 				movePawn(newx,newy,oldx,oldy,current_player);
 				swapPlayers();
-				
 			}
 			//Bishop
 			if((pieceSelected==whiteBishop&&current_player==1) || (pieceSelected==blackBishop&&current_player==2)){
 				moveBishop(newx,newy,oldx,oldy,current_player);
 				swapPlayers(); 
-				
-				
 			}
 			//Knight
 			if((pieceSelected==whiteKnight&&current_player==1) || (pieceSelected==blackKnight&&current_player==2)){
@@ -110,29 +105,24 @@ class ChessWidget extends JComponent implements  MouseListener{
 			if(pieceSelected==whiteQueen&&current_player==1||pieceSelected==blackQueen&&current_player==2){
 				moveQueen(newx,newy,oldx,oldy,current_player);
 				swapPlayers(); 
-				
 			}
 			//King
 			if(pieceSelected==whiteKing&&current_player==1||pieceSelected==blackKing&&current_player==2){
 				moveKing(newX,newY,oldX,oldY,current_player);
 				swapPlayers(); 
 			}	
-			
-		}
-			
-	
-	
-	
-		private int checkPiece(int x, int y) {
-			// check for the out of bounds case first, if everything is in bounds then just return whatever is in the board
-			// position
-			if(x < 0 || x > 7 || y < 0 || y > 7)
-				return -1;
-			else
-				return board[x][y];
 		}
 
-	
+	//Check that a move is valid an not out of bounds 
+	private boolean checkValid(int newX,int newY) {
+			if(newX>7||newY>7){
+				return false; 
+			}
+			else{
+				return true;
+			}
+		}
+	//Method for moving the bishop only in the diagonal 
 	public void moveBishop(int newX, int newY,int oldX, int oldY, int current_player){
 		int dx = newX-oldX;
 		int dy = newY-oldY;
@@ -150,8 +140,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 	    		
 				}
 			}
-	
-		public void moveKing(int newX, int newY,int oldX, int oldY, int current_player){
+	//Allowing the king to move only one space 
+	public void moveKing(int newX, int newY,int oldX, int oldY, int current_player){
 		int dx = newX-oldX;
 		int dy = newY-oldY;
 		
@@ -163,7 +153,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			repaint();
 		 }
 	}
-	
+	//Knight move so he can only move in an L shape. 
 	public void moveKnight(int newX, int newY, int oldX, int oldY, int current_player){
 			int dx = newX-oldX;
 			int dy = newY-oldY;
@@ -176,6 +166,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		    			repaint();
 					}
 		}
+	//Pawn move so that it can move two at the starting position also calls upgradePawn. 
 	public void movePawn(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
 	    int dy = newY - oldY;	
@@ -220,8 +211,8 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 	    	
 	  }
-	
-		public void moveQueen(int newX, int newY, int oldX, int oldY, int current_player){
+	//Queen can move in any direction as many squares as it wants 
+	public void moveQueen(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX; 
 		int dy = newY - oldY;
 		 
@@ -254,7 +245,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 		
 	}
-	
+	//Rook can move in any directions as many squares as it wants. 
 	public void moveRook(int newX, int newY, int oldX, int oldY, int current_player){
 		int dx = newX - oldX;
 		int dy = newY - oldY;
@@ -273,8 +264,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	
 	
 }
-	
-	
+	//Draws the grid and also the tiles 
 	public void drawGrid(Graphics2D g2d){
 	
 		
@@ -299,7 +289,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 	        	}
 	        }
 	}
-	
+	//Sets the initial state of 
 	public void initialState(){
 		
 		
@@ -344,7 +334,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 				
 	
 	}
-	
+	//Draws the entire board through the loop that checks the what is on the 8x8 array. 
 	public void drawPieces(Graphics2D g2d){
 		for(int x = 0; x < 8; x++) {
 			for(int y = 0; y < 8; y++) {
@@ -456,7 +446,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 			}
 		}
 	}
-	
+	//Swaps players when a valid move has been made 
 	private void swapPlayers(){
 		if(board[oldx][oldy]==0){
 		if(current_player == 1)
@@ -467,7 +457,7 @@ class ChessWidget extends JComponent implements  MouseListener{
 		
 	}
 	}
-	
+	//Upgrade pawn method for when the pieces reach the other side of the board sets the piece to a queen. 
 	public void upgradePawn(int newX, int newY,int oldX, int oldY, int current_player){
   
 		//upgrades to a Queen if Pawn reaches end of the board
@@ -560,15 +550,14 @@ class ChessWidget extends JComponent implements  MouseListener{
 			int blackKing = 6;  	 
 			int blackQueen = 7; 	 
 			int blackBishop = 8; 
-			int blackKnight = 9; //set to 13
-			int blackRook = 10;   //set to 15
+			int blackKnight = 9; 
+			int blackRook = 10;  
 			int blackPawn = 22;
 		
 			
 			int oldx,oldy,newx,newy;
-			int pieceSelected;
+			int pieceSelected;					
 			int current_player;					// denotes who the current player is
-			boolean inPlay;						// indicates if the game is being played at the moment
 			Color black,white,brown,red;
 			int board[][];
 			
