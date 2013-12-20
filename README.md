@@ -1,5 +1,19 @@
-ChessProject
-============
+Sean Bourke Mckenna, Conor Mckernan
+2813953, 
 
 
-Finished the draw board
+Attempt Move, Conor
+CheckPiece, Sean	
+MoveBisop, Sean
+MoveKing, Conor
+moveKnight, Sean
+movePawn, Conor/Sean
+MoveQueen, Sean
+moveRook, Conor
+DrawGrid, Conor
+initialState, Conor
+drawPieces, Sean
+swapPlayers, Conor
+upgradePawn, Sean
+
+
