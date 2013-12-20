@@ -481,66 +481,67 @@ class ChessWidget extends JComponent implements  MouseListener{
       	  board[1][0] = whiteQueen;
         }
         
-        if(board[2][0]==whitePawn){
+        else if(board[2][0]==whitePawn){
       	  board[2][0] = whiteQueen;
         }
   
   
-        if(board[3][0]==whitePawn){
+        else if(board[3][0]==whitePawn){
   		board[4][0] = whiteQueen;
   	  }
 
-		if(board[4][0]==whitePawn){
+        else if(board[4][0]==whitePawn){
 			  board[4][0] = whiteQueen;
 		}
 		
-		if(board[5][0]==whitePawn){
+        else if(board[5][0]==whitePawn){
 			  board[5][0] = whiteQueen;
 		}
 		
-		if(board[6][0]==whitePawn){
+        else if(board[6][0]==whitePawn){
 			  board[6][0] = whiteQueen;
 		}
 		
-		if(board[7][0]==whitePawn){
+        else if(board[7][0]==whitePawn){
 			  board[7][0] = whiteQueen;
 		}
    }
         
       if(pieceSelected==blackPawn){
-      	if(board[0][7]==blackPawn){
+      if(board[0][7]==blackPawn){
          	 board[0][7] = blackQueen;
            }
       	
-      	if(board[1][7]==blackPawn){
+      else if(board[1][7]==blackPawn){
             	 board[1][7] = blackQueen;
               }
       	
-      	if(board[2][7]==blackPawn){
+      else if(board[2][7]==blackPawn){
             	 board[2][7] = blackQueen;
               }
       	
-      	if(board[3][7]==blackPawn){
+      else if(board[3][7]==blackPawn){
             	 board[3][7] = blackQueen;
               }
       	
-      	if(board[4][7]==blackPawn){
+      else if(board[4][7]==blackPawn){
             	 board[4][7] = blackQueen;
               }
       	
-      	if(board[5][7]==blackPawn){
+      else if(board[5][7]==blackPawn){
             	 board[5][7] = blackQueen;
               }
       	
-      	if(board[6][7]==blackPawn){
+      else if(board[6][7]==blackPawn){
             	 board[6][7] = blackQueen;
               }
       	
-      	if(board[7][7]==blackPawn){
+      else	if(board[7][7]==blackPawn){
             	 board[7][7] = blackQueen;
               }
       	
       }
+	
         
 }
 
